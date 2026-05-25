@@ -1,29 +1,38 @@
-"use client";
+'use client';
 
-import { useState, useTransition } from "react";
-import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { createLinkAction } from "./actions";
-import { useRouter } from "next/navigation";
+import { useState, useTransition } from 'react';
+import { Button } from '@/components/ui/button';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { createLinkAction } from './actions';
+import { useRouter } from 'next/navigation';
 
 interface CreateLinkDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }
 
-export function CreateLinkDialog({ open, onOpenChange }: CreateLinkDialogProps) {
+export function CreateLinkDialog({
+  open,
+  onOpenChange,
+}: CreateLinkDialogProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
-  const [originalUrl, setOriginalUrl] = useState("");
-  const [shortCode, setShortCode] = useState("");
+  const [originalUrl, setOriginalUrl] = useState('');
+  const [shortCode, setShortCode] = useState('');
   const [error, setError] = useState<string | null>(null);
 
   function handleClose(isOpen: boolean) {
     if (!isOpen) {
-      setOriginalUrl("");
-      setShortCode("");
+      setOriginalUrl('');
+      setShortCode('');
       setError(null);
     }
     onOpenChange(isOpen);
@@ -39,7 +48,7 @@ export function CreateLinkDialog({ open, onOpenChange }: CreateLinkDialogProps) 
         shortCode: shortCode.trim() || undefined,
       });
 
-      if ("error" in result) {
+      if ('error' in result) {
         setError(result.error);
       } else {
         handleClose(false);
@@ -49,18 +58,12 @@ export function CreateLinkDialog({ open, onOpenChange }: CreateLinkDialogProps) 
   }
 
   return (
-    <Dialog
-      open={open}
-      onOpenChange={handleClose}
-    >
+    <Dialog open={open} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Create short link</DialogTitle>
         </DialogHeader>
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-4"
-        >
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="originalUrl">Destination URL</Label>
             <Input
@@ -75,7 +78,10 @@ export function CreateLinkDialog({ open, onOpenChange }: CreateLinkDialogProps) 
           </div>
           <div className="space-y-2">
             <Label htmlFor="shortCode">
-              Custom short code <span className="text-muted-foreground font-normal">(optional)</span>
+              Custom short code{' '}
+              <span className="text-muted-foreground font-normal">
+                (optional)
+              </span>
             </Label>
             <Input
               id="shortCode"
@@ -96,11 +102,8 @@ export function CreateLinkDialog({ open, onOpenChange }: CreateLinkDialogProps) 
             >
               Cancel
             </Button>
-            <Button
-              type="submit"
-              disabled={isPending}
-            >
-              {isPending ? "Creating..." : "Create link"}
+            <Button type="submit" disabled={isPending}>
+              {isPending ? 'Creating...' : 'Create link'}
             </Button>
           </DialogFooter>
         </form>

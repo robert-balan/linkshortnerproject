@@ -1,6 +1,6 @@
-import { db } from "@/db";
-import { shortLinks } from "@/db/schema";
-import { and, desc, eq } from "drizzle-orm";
+import { db } from '@/db';
+import { shortLinks } from '@/db/schema';
+import { and, desc, eq } from 'drizzle-orm';
 
 export async function getUserLinks(clerkUserId: string) {
   return db
@@ -43,16 +43,27 @@ export async function updateLink(input: UpdateLinkInput) {
       originalUrl: input.originalUrl,
       updatedAt: new Date(),
     })
-    .where(and(eq(shortLinks.id, input.id), eq(shortLinks.clerkUserId, input.clerkUserId)))
+    .where(
+      and(
+        eq(shortLinks.id, input.id),
+        eq(shortLinks.clerkUserId, input.clerkUserId),
+      ),
+    )
     .returning();
   return link;
 }
 
 export async function deleteLink(id: number, clerkUserId: string) {
-  await db.delete(shortLinks).where(and(eq(shortLinks.id, id), eq(shortLinks.clerkUserId, clerkUserId)));
+  await db
+    .delete(shortLinks)
+    .where(and(eq(shortLinks.id, id), eq(shortLinks.clerkUserId, clerkUserId)));
 }
 
 export async function getLinkByShortCode(shortCode: string) {
-  const [link] = await db.select().from(shortLinks).where(eq(shortLinks.shortCode, shortCode)).limit(1);
+  const [link] = await db
+    .select()
+    .from(shortLinks)
+    .where(eq(shortLinks.shortCode, shortCode))
+    .limit(1);
   return link ?? null;
 }

@@ -1,9 +1,9 @@
-import { auth } from "@clerk/nextjs/server";
-import { getUserLinks } from "@/data/links";
-import { Card, CardContent } from "@/components/ui/card";
-import { Link2 } from "lucide-react";
-import { CreateLinkButton } from "./create-link-button";
-import { LinkCard } from "./link-card";
+import { auth } from '@clerk/nextjs/server';
+import { getUserLinks } from '@/data/links';
+import { Card, CardContent } from '@/components/ui/card';
+import { Link2 } from 'lucide-react';
+import { CreateLinkButton } from './create-link-button';
+import { LinkCard } from './link-card';
 
 export default async function DashboardPage() {
   const { userId } = await auth();
@@ -26,10 +26,7 @@ export default async function DashboardPage() {
       ) : (
         <div className="flex flex-col gap-4">
           {links.map((link) => (
-            <LinkCard
-              key={link.id}
-              link={link}
-            />
+            <LinkCard key={link.id} link={link} />
           ))}
         </div>
       )}

@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 export const metadata = {
-  title: "Test Page",
+  title: 'Test Page',
 };
 
 export default function TestPage() {

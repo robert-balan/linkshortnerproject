@@ -25,9 +25,9 @@ The `/dashboard` page **must** require the user to be signed in. Enforce this in
 
 ```ts
 // proxy.ts
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 
-const isProtectedRoute = createRouteMatcher(["/dashboard(.*)"]);
+const isProtectedRoute = createRouteMatcher(['/dashboard(.*)']);
 
 export default clerkMiddleware(async (auth, req) => {
   if (isProtectedRoute(req)) {
@@ -41,12 +41,12 @@ export default clerkMiddleware(async (auth, req) => {
 If an authenticated user visits `/`, they must be redirected to `/dashboard`. Handle this in the `/` page (Server Component):
 
 ```ts
-import { auth } from "@clerk/nextjs/server";
-import { redirect } from "next/navigation";
+import { auth } from '@clerk/nextjs/server';
+import { redirect } from 'next/navigation';
 
 export default async function HomePage() {
   const { userId } = await auth();
-  if (userId) redirect("/dashboard");
+  if (userId) redirect('/dashboard');
   // ... render landing page
 }
 ```

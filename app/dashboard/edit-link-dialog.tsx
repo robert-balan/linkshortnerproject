@@ -1,12 +1,18 @@
-"use client";
+'use client';
 
-import { useState, useTransition } from "react";
-import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { updateLinkAction } from "./actions";
-import { useRouter } from "next/navigation";
+import { useState, useTransition } from 'react';
+import { Button } from '@/components/ui/button';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { updateLinkAction } from './actions';
+import { useRouter } from 'next/navigation';
 
 interface EditLinkDialogProps {
   open: boolean;
@@ -18,7 +24,11 @@ interface EditLinkDialogProps {
   };
 }
 
-export function EditLinkDialog({ open, onOpenChange, link }: EditLinkDialogProps) {
+export function EditLinkDialog({
+  open,
+  onOpenChange,
+  link,
+}: EditLinkDialogProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const [originalUrl, setOriginalUrl] = useState(link.originalUrl);
@@ -45,7 +55,7 @@ export function EditLinkDialog({ open, onOpenChange, link }: EditLinkDialogProps
         shortCode,
       });
 
-      if ("error" in result) {
+      if ('error' in result) {
         setError(result.error);
       } else {
         handleClose(false);
@@ -55,18 +65,12 @@ export function EditLinkDialog({ open, onOpenChange, link }: EditLinkDialogProps
   }
 
   return (
-    <Dialog
-      open={open}
-      onOpenChange={handleClose}
-    >
+    <Dialog open={open} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Edit short link</DialogTitle>
         </DialogHeader>
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-4"
-        >
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="edit-originalUrl">Destination URL</Label>
             <Input
@@ -101,11 +105,8 @@ export function EditLinkDialog({ open, onOpenChange, link }: EditLinkDialogProps
             >
               Cancel
             </Button>
-            <Button
-              type="submit"
-              disabled={isPending}
-            >
-              {isPending ? "Saving…" : "Save changes"}
+            <Button type="submit" disabled={isPending}>
+              {isPending ? 'Saving…' : 'Save changes'}
             </Button>
           </DialogFooter>
         </form>

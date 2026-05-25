@@ -102,9 +102,7 @@
         "short_links_short_code_unique": {
           "name": "short_links_short_code_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "short_code"
-          ]
+          "columns": ["short_code"]
         }
       },
       "policies": {},

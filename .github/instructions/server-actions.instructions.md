@@ -33,7 +33,7 @@ description: Read this file before creating or modifying server actions for data
 const schema = z.object({ url: z.string().url() });
 
 const result = schema.safeParse(input);
-if (!result.success) return { error: "Invalid input" };
+if (!result.success) return { error: 'Invalid input' };
 ```
 
 ## Authentication
@@ -43,7 +43,7 @@ if (!result.success) return { error: "Invalid input" };
 
 ```ts
 const { userId } = await auth();
-if (!userId) return { error: "Unauthorized" };
+if (!userId) return { error: 'Unauthorized' };
 ```
 
 ## Error Handling
@@ -54,10 +54,10 @@ if (!userId) return { error: "Unauthorized" };
 ```ts
 // ✅ Correct
 return { success: true };
-return { error: "Something went wrong" };
+return { error: 'Something went wrong' };
 
 // ❌ Wrong
-throw new Error("Something went wrong");
+throw new Error('Something went wrong');
 ```
 
 ## Database Access
