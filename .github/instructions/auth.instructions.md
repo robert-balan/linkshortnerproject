@@ -1,4 +1,10 @@
+---
+description: Read this before implementing or modifying authentification in the project.
+---
+
 # Authentication — Clerk
+
+This document provides specific guidlines for implementing authentication in this project using Clerk. All auth-related code must adhere to these rules to ensure consistency, security, and maintainability across the codebase.
 
 ## Overview
 

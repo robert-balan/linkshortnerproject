@@ -1,3 +1,7 @@
+---
+description: Read this before implementing or modifying UI components in the project.
+---
+
 # UI Standards
 
 ## Library

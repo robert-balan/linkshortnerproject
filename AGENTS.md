@@ -1,6 +1,6 @@
 # Agent Instructions - Link Shortener Project
 
-This file is the entry point for LLM agent coding standards. All agents working on this project **must** adhere to the guidelines defined in this file and the referenced documentation.
+This file is the entry point for LLM agent coding standards. All agents working on this project **must** adhere to the guidelines defined in this file.
 
 ## Project Summary
 
@@ -22,19 +22,6 @@ This file is the entry point for LLM agent coding standards. All agents working 
 | DB migrations    | `npx drizzle-kit generate` |
 | Apply migrations | `npx drizzle-kit migrate`  |
 | DB Studio        | `npx drizzle-kit studio`   |
-
-## Coding Standards Documentation
-
-> **CRITICAL — MANDATORY STEP:** You **MUST** read the relevant file(s) from the `/docs` directory **BEFORE writing a single line of code**. This is non-negotiable. Skipping this step will result in incorrect, non-compliant code. There are no exceptions.
-
-Full coding standards are located in the `/docs` directory. Use the table below to identify which file applies to your task, then read it in full before proceeding. If no relevant doc exists for the task, proceed using the Key Technical Constraints section.
-
-| Topic          | File            |
-| -------------- | --------------- |
-| Authentication | `/docs/auth.md` |
-| UI Components  | `/docs/ui.md`   |
-
-**Do not assume you already know the conventions. Always read the file.**
 
 ## Key Technical Constraints
 

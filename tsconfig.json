@@ -28,7 +28,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
+    "**/*.mts",
+    ".github/instructions/generate-short-code.ts"
   ],
   "exclude": ["node_modules"]
 }
