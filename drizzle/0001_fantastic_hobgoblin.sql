@@ -1,0 +1,3 @@
+ALTER TABLE "short_links" DROP CONSTRAINT "short_links_pkey";--> statement-breakpoint
+ALTER TABLE "short_links" ADD COLUMN "id" integer PRIMARY KEY NOT NULL GENERATED ALWAYS AS IDENTITY (sequence name "short_links_id_seq" INCREMENT BY 1 MINVALUE 1 MAXVALUE 2147483647 START WITH 1 CACHE 1);--> statement-breakpoint
+ALTER TABLE "short_links" ADD CONSTRAINT "short_links_short_code_unique" UNIQUE("short_code");

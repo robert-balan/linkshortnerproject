@@ -15,10 +15,10 @@ All authentication in this project is handled exclusively by **Clerk** (`@clerk/
 
 ### `/dashboard` — Protected Route
 
-The `/dashboard` page **must** require the user to be signed in. Enforce this in `middleware.ts` using Clerk's `clerkMiddleware` with `createRouteMatcher`:
+The `/dashboard` page **must** require the user to be signed in. Enforce this in `proxy.ts` using Clerk's `clerkMiddleware` with `createRouteMatcher`:
 
 ```ts
-// middleware.ts
+// proxy.ts
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
 const isProtectedRoute = createRouteMatcher(["/dashboard(.*)"]);

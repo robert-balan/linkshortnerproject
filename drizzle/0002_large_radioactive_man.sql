@@ -1,0 +1,1 @@
+ALTER TABLE "short_links" RENAME COLUMN "url" TO "original_url";

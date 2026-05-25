@@ -47,6 +47,7 @@ Agents **must always** follow these rules without exception:
 - Clerk v7 APIs — use `@clerk/nextjs/server` for server-side, hooks for client-side
 - `@/*` path alias maps to project root per `tsconfig.json`
 - All UI must use shadcn/ui components — do not create custom components
+- **NEVER use `middleware.ts`** — it is deprecated in this version of Next.js. Use `proxy.ts` instead for all middleware logic
 
 ## Project Structure
 

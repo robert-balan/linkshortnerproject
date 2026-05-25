@@ -62,10 +62,10 @@ export default async function Home() {
           A fast, simple link shortener that gives you clean URLs and real-time analytics — all in one place.
         </p>
         <div className="flex gap-3 flex-wrap justify-center">
-          <SignUpButton mode="modal">
+          <SignUpButton mode="modal" forceRedirectUrl="/dashboard">
             <Button size="lg">Get Started — It&apos;s Free</Button>
           </SignUpButton>
-          <SignInButton mode="modal">
+          <SignInButton mode="modal" forceRedirectUrl="/dashboard">
             <Button
               size="lg"
               variant="outline"
@@ -99,7 +99,7 @@ export default async function Home() {
         <div className="flex flex-col items-center gap-4 text-center px-4 py-16 max-w-xl mx-auto">
           <h2 className="text-2xl font-semibold">Ready to get started?</h2>
           <p className="text-muted-foreground">Create your free account and shorten your first link today.</p>
-          <SignUpButton mode="modal">
+          <SignUpButton mode="modal" forceRedirectUrl="/dashboard">
             <Button size="lg">Create Free Account</Button>
           </SignUpButton>
         </div>
