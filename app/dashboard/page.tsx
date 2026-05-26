@@ -1,9 +1,15 @@
 import { auth } from '@clerk/nextjs/server';
 import { getUserLinks } from '@/data/links';
+import type { Metadata } from 'next';
 import { Card, CardContent } from '@/components/ui/card';
 import { Link2 } from 'lucide-react';
 import { CreateLinkButton } from './create-link-button';
 import { LinkCard } from './link-card';
+
+export const metadata: Metadata = {
+  title: 'Dashboard',
+  description: 'Manage your shortened links.',
+};
 
 export default async function DashboardPage() {
   const { userId } = await auth();

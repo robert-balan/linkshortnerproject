@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /api/
+Disallow: /dashboard/
+Disallow: /__clerk/
+
+Allow: /
+Allow: /l/

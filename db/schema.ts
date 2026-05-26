@@ -2,7 +2,6 @@ import {
   index,
   integer,
   pgTable,
-  text,
   timestamp,
   varchar,
 } from 'drizzle-orm/pg-core';
@@ -13,7 +12,7 @@ export const shortLinks = pgTable(
     id: integer('id').generatedAlwaysAsIdentity().primaryKey(),
     clerkUserId: varchar('clerk_user_id', { length: 255 }).notNull(),
     shortCode: varchar('short_code', { length: 64 }).notNull().unique(),
-    originalUrl: text('original_url').notNull(),
+    originalUrl: varchar('original_url', { length: 2048 }).notNull(),
     createdAt: timestamp('created_at', { withTimezone: true, mode: 'date' })
       .defaultNow()
       .notNull(),

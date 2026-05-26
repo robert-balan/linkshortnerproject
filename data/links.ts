@@ -1,6 +1,6 @@
 import { db } from '@/db';
 import { shortLinks } from '@/db/schema';
-import { and, desc, eq } from 'drizzle-orm';
+import { and, count, desc, eq, gte } from 'drizzle-orm';
 
 export async function getUserLinks(clerkUserId: string) {
   return db
@@ -8,6 +8,23 @@ export async function getUserLinks(clerkUserId: string) {
     .from(shortLinks)
     .where(eq(shortLinks.clerkUserId, clerkUserId))
     .orderBy(desc(shortLinks.createdAt));
+}
+
+export async function countRecentLinksByUser(
+  clerkUserId: string,
+  windowMinutes: number,
+): Promise<number> {
+  const since = new Date(Date.now() - windowMinutes * 60 * 1000);
+  const [row] = await db
+    .select({ value: count() })
+    .from(shortLinks)
+    .where(
+      and(
+        eq(shortLinks.clerkUserId, clerkUserId),
+        gte(shortLinks.createdAt, since),
+      ),
+    );
+  return row?.value ?? 0;
 }
 
 export interface CreateLinkInput {
@@ -66,4 +83,13 @@ export async function getLinkByShortCode(shortCode: string) {
     .where(eq(shortLinks.shortCode, shortCode))
     .limit(1);
   return link ?? null;
+}
+
+export async function shortCodeExists(shortCode: string): Promise<boolean> {
+  const [row] = await db
+    .select({ id: shortLinks.id })
+    .from(shortLinks)
+    .where(eq(shortLinks.shortCode, shortCode))
+    .limit(1);
+  return row != null;
 }

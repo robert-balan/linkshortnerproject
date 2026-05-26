@@ -1,10 +1,17 @@
 import { auth } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
 import { SignInButton, SignUpButton } from '@clerk/nextjs';
+import type { Metadata } from 'next';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Link2, Zap, Shield, Globe, Clipboard } from 'lucide-react';
+import { Link2, Zap, Shield, Globe, Clipboard, Infinity } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'Shorten Links, Share Instantly',
+  description:
+    'A fast, simple link shortener that gives you clean, shareable URLs — no friction, no fuss.',
+};
 
 const features = [
   {
@@ -37,6 +44,12 @@ const features = [
     description:
       'Choose a memorable slug for your links instead of a random string.',
   },
+  {
+    icon: Infinity,
+    title: 'Links That Last',
+    description:
+      'Your short links never expire. Create once and share forever — no time limits, ever.',
+  },
 ];
 
 export default async function Home() {
@@ -53,7 +66,7 @@ export default async function Home() {
         <h1 className="text-5xl font-bold tracking-tight">
           Shorten links.
           <br />
-          Share instantly.
+          <span className="text-fuchsia-500">Share instantly.</span>
         </h1>
         <p className="text-lg text-muted-foreground max-w-xl">
           A fast, simple link shortener that gives you clean, shareable URLs —
@@ -94,7 +107,9 @@ export default async function Home() {
       {/* CTA */}
       <section className="w-full border-t border-border">
         <div className="flex flex-col items-center gap-4 text-center px-4 py-16 max-w-xl mx-auto">
-          <h2 className="text-2xl font-semibold">Ready to get started?</h2>
+          <h2 className="text-2xl font-semibold">
+            Ready to <span className="text-fuchsia-500">get started?</span>
+          </h2>
           <p className="text-muted-foreground">
             Create your free account and shorten your first link today.
           </p>
