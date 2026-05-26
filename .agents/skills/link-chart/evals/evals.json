@@ -1,0 +1,50 @@
+{
+  "skill_name": "link-chart",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Generate a bar chart of the short links created in the past 12 months and save it as link-stats.png",
+      "expected_output": "A PNG file named link-stats.png in the current directory containing a bar chart with 12 monthly bars, x-axis showing month labels (e.g. 'Jun 2025'), y-axis showing integer link counts, and an appropriate title.",
+      "files": [],
+      "assertions": [
+        { "text": "A PNG file is present in the output directory" },
+        {
+          "text": "The PNG file is larger than 10 KB (confirms a real rendered chart, not an empty file)"
+        },
+        {
+          "text": "The filename matches the user's requested name (link-stats.png or similar)"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "How many links did we create per month last year? Show me a chart.",
+      "expected_output": "A PNG bar chart covering the past 12 calendar months, with all 12 months present on the x-axis (zero-height bar for months with no links), exported as a PNG and the file path reported to the user.",
+      "files": [],
+      "assertions": [
+        { "text": "A PNG file is present in the output directory" },
+        {
+          "text": "The PNG file is larger than 10 KB (confirms a real rendered chart)"
+        },
+        {
+          "text": "All 12 calendar months are represented (zero-count months included, not just months with data)"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Export a link creation graph to /tmp/my-chart.png using the .env at the project root.",
+      "expected_output": "A PNG file at /tmp/my-chart.png showing 12 monthly bars; the script is invoked with --output /tmp/my-chart.png --env .env; the path is confirmed to the user.",
+      "files": [],
+      "assertions": [
+        { "text": "A PNG file is present in the output directory" },
+        {
+          "text": "The PNG file is larger than 10 KB (confirms a real rendered chart)"
+        },
+        {
+          "text": "The output path honors the user-specified location (/tmp/my-chart.png → copied to outputs as my-chart.png)"
+        }
+      ]
+    }
+  ]
+}
