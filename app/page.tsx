@@ -3,54 +3,14 @@ import { redirect } from 'next/navigation';
 import { SignInButton, SignUpButton } from '@clerk/nextjs';
 import type { Metadata } from 'next';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Link2, Zap, Shield, Globe, Clipboard, Infinity } from 'lucide-react';
+import { FeatureCards } from './feature-cards';
 
 export const metadata: Metadata = {
   title: 'Shorten Links, Share Instantly',
   description:
     'A fast, simple link shortener that gives you clean, shareable URLs — no friction, no fuss.',
 };
-
-const features = [
-  {
-    icon: Zap,
-    title: 'Instant Shortening',
-    description:
-      'Paste any long URL and get a clean short link in seconds — no friction, no fuss.',
-  },
-  {
-    icon: Clipboard,
-    title: 'Link Management',
-    description:
-      'View, edit, and organise all your shortened links from one simple dashboard.',
-  },
-  {
-    icon: Globe,
-    title: 'Works Everywhere',
-    description:
-      'Share short links on social media, emails, or any platform — they just work.',
-  },
-  {
-    icon: Shield,
-    title: 'Secure & Reliable',
-    description:
-      'Every link is stored securely. Your data stays yours, always.',
-  },
-  {
-    icon: Link2,
-    title: 'Custom Slugs',
-    description:
-      'Choose a memorable slug for your links instead of a random string.',
-  },
-  {
-    icon: Infinity,
-    title: 'Links That Last',
-    description:
-      'Your short links never expire. Create once and share forever — no time limits, ever.',
-  },
-];
 
 export default async function Home() {
   const { userId } = await auth();
@@ -89,19 +49,7 @@ export default async function Home() {
         <h2 className="text-2xl font-semibold text-center mb-10">
           Everything you need
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {features.map(({ icon: Icon, title, description }) => (
-            <Card key={title}>
-              <CardHeader className="flex flex-row items-center gap-3 pb-2">
-                <Icon className="size-5 text-primary shrink-0" />
-                <CardTitle className="text-base">{title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">{description}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+        <FeatureCards />
       </section>
 
       {/* CTA */}
